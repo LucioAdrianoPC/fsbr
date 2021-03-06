@@ -14,5 +14,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'API\CRUDTestController@list')->name('inicial');
-//Route::get('/', 'API\CRUDTestController@add')->name('add');
+//Route::get('/novo', view('inclusao'));
+
+
+Route::get('/novo', function () {
+    return view('inclusao');
+});
+
+Route::post('/inclusao', 'API\CRUDTestController@add')->name('inclusao');
 //Route::get('coworking/{coworking}/unidade','UnitController@index')->name('admin.unit.index');
