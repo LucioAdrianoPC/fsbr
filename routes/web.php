@@ -27,5 +27,11 @@ Route::get('/alteracao', function () {
     return view('alteracao');
 });
 
-Route::post('/alteracao', 'Controller@alterarCadastro')->name('inclusao');
-//Route::get('coworking/{coworking}/unidade','UnitController@index')->name('admin.unit.index');
+Route::post('/alteracao', 'API\CRUDTestController@edite')->name('alteracao');
+
+
+Route::get('/exclusao', function () {
+    return view('exclusao');
+});
+
+Route::post('/exclusao', 'API\CRUDTestController@exclusao')->name('exclusao');

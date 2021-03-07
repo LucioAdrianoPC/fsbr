@@ -53,31 +53,58 @@ class CRUDTestController extends Controller
         $id = \App\Models\Cadastro::adicionarCadastro($nome, $idUsuario);
         if ( !$id ) return response("Erro salvando dados no banco!", 500);
 
-        return response()->json([
-              'id' => $id,
-             'message' => 'Dados salvos com sucesso!'
+         return response()->json([
+               'id' => $id,
+              'message' => 'Dados salvos com sucesso!'
             
 
-         ]);
+          ]);
+        
+        //  return view('inicial')->with('mensagem', 'Cadastrado com sucesso!');
 
     }
 
     public function edite(Request $request) {
-        $idUsuario = 1;
+        $idUsuario = 1; 
+        $situacao = 'A';
+        $codigo = $request->input('id');
         $nome = $request->input('nome');
+
         
         if ( empty($nome) )
         return response("Parâmetros Inválidos!", 401);
         
-        $id = \App\Models\Cadastro::adicionarCadastro($nome, $idUsuario);
+        $id = \App\Models\Cadastro::alterarCadastro($codigo ,$idUsuario ,$nome, $situacao );
         if ( !$id ) return response("Erro salvando dados no banco!", 500);
 
         return response()->json([
               'id' => $id,
-             'message' => 'Dados salvos com sucesso!'
+             'message' => 'Dados editados com sucesso!'
             
 
          ]);
 
-    }
+        }
+
+        public function exclusao(Request $request) {
+            $idUsuario = 1; 
+            $situacao = 'E';
+            $codigo = $request->input('id');
+            $nome = $request->input('nome');
+
+            
+            if ( empty($nome) )
+            return response("Parâmetros Inválidos!", 401);
+            
+            $id = \App\Models\Cadastro::alterarCadastro($codigo ,$idUsuario ,$nome, $situacao );
+            if ( !$id ) return response("Erro salvando dados no banco!", 500);
+    
+            return response()->json([
+                  'id' => $id,
+                 'message' => 'Dados excluídos com sucesso!'
+                
+    
+             ]);
+    
+            }
 }

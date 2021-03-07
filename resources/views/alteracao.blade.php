@@ -1,3 +1,8 @@
+<?php
+  $nome = $_GET['nome'];
+  $id_cadastro = $_GET['id'];
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -11,12 +16,11 @@
 <body>
 <div class='container'>
    <!-- cabeçalho -->
-   <div class='row'>
-        
-      <div class='col-lg-12 card' style="background-color: silver">
-         <h2 style="color: white">Alterar Cadastro</h2>
-      </div> 
-   </div>
+   <div class="card text-center">
+      <div class="card-header">
+         <h4>Alterar Cadastro</h4>
+      </div>
+   </div>  
    <!-- lista -->
    <div class='row'>
       <div class='col-lg-12'>
@@ -24,7 +28,8 @@
          @csrf
          <div class="form-group">
            <label>Nome</label>
-           <input type="text" class="form-control" name="nome" placeholder="Nome" value="{{}}">
+           <input type="hidden" class="form-control" name="id" placeholder="id" value="<?php echo $id_cadastro ?>">
+           <input type="text" class="form-control" name="nome" placeholder="Nome" value="<?php echo $nome ?>">
          </div>
          <div class="form-group" style="padding-top: 10px">
             <button type="submit" class="btn btn-primary">Salvar</button>
