@@ -14,17 +14,17 @@
    <div class='row'>
         
       <div class='col-lg-12 card' style="background-color: silver">
-         <h2 style="color: white">Adicionar Cadastro</h2>
+         <h2 style="color: white">Alterar Cadastro</h2>
       </div> 
    </div>
    <!-- lista -->
    <div class='row'>
       <div class='col-lg-12'>
-      <form method="post" action="{{route('inclusao')}}">
+      <form method="post" action="{{route('alteracao')}}">
          @csrf
          <div class="form-group">
            <label>Nome</label>
-           <input type="text" class="form-control" name="nome" placeholder="Nome">
+           <input type="text" class="form-control" name="nome" placeholder="Nome" value="{{}}">
          </div>
          <div class="form-group" style="padding-top: 10px">
             <button type="submit" class="btn btn-primary">Salvar</button>

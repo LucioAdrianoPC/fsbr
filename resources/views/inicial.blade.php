@@ -11,9 +11,10 @@
 <body>
 <div class='container'>
    <!-- cabeçalho -->
+   
       <div class="card text-center">
         <div class="card-header">
-           <h2>Lista do Cadastros</h2>
+           <h4>Lista do Cadastros</h4>
         </div>
         <div class="card-body">
           <a href="/novo" class="btn btn-primary">Adicionar Cadastro</a>

@@ -22,4 +22,10 @@ Route::get('/novo', function () {
 });
 
 Route::post('/inclusao', 'API\CRUDTestController@add')->name('inclusao');
+
+Route::get('/alteracao', function () {
+    return view('alteracao');
+});
+
+Route::post('/alteracao', 'Controller@alterarCadastro')->name('inclusao');
 //Route::get('coworking/{coworking}/unidade','UnitController@index')->name('admin.unit.index');
