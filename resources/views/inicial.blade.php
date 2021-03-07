@@ -11,65 +11,52 @@
 <body>
 <div class='container'>
    <!-- cabeçalho -->
-   <div class='row'>
-      <div class='col-lg-12'>
-         <button type="button" class="btn btn-primary">Adicionar</button>
-      </div> 
-   </div>
+      <div class="card text-center">
+        <div class="card-header">
+           <h2>Lista do Cadastros</h2>
+        </div>
+        <div class="card-body">
+          <a href="/novo" class="btn btn-primary">Adicionar Cadastro</a>
+        </div>
+        
+      </div>   
+      
    <!-- lista -->
    <div class='row'>
       <div class='col-lg-12'>
-      <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">ID</th>
-      <th scope="col">Nome</th>
-      <th scope="col">Situação</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  {{--}
-      "codigo_cadastro":1,
-      "nome_cadastro":"Cadastro 1 Edtado",
-      "situacao":"Excluido",
-      "data_criacao":null,
-      "data_atualizacao":"2021-02-25 11:49:28",
-      "data_exclusao":"2021-02-25 11:49:45"
-     --}}
-      
-  <tbody>
-  @foreach($resultado['data'] as $item)
-    <tr>
-      <td>{{$item->codigo_cadastro}}</td>
-      <td>{{$item->nome_cadastro}}</td>
-      <td>{{$item->situacao}}</td>
-      <td>@mdo</td>
-    </tr>
-  @endforeach
-  </tbody>
-  
-</table>
-<nav aria-label="Page navigation example">
-  <ul class="pagination">
-    <li class="page-item">
-      <a class="page-link" href="#" aria-label="Previous">
-        <span aria-hidden="true">&laquo;</span>
-      </a>
-    </li>
-    
-    @foreach($resultado['data'] as $item)
-    
-    <li class="page-item"><a class="page-link" href="?page=1">1</a></li>
+        <div class="list-group">
+        @foreach($resultado['data'] as $item)
+          <a href="/alteracao?id={{$item->codigo_cadastro}}" class="list-group-item list-group-item-action">
+            <div class="d-flex w-100 justify-content-between">
+              <h5 class="mb-1">{{$item->nome_cadastro}}</h5>
+              <i class="fas fa-trash-alt"></i>
+            </div>
+            <p class="mb-1">Número: {{$item->codigo_cadastro}}</p>
+            <small class="text-muted">Situação: {{$item->situacao}}</small>
+          </a>
+        @endforeach  
+        </div>
+        <nav aria-label="Page navigation example">
+          <ul class="pagination">
+            <li class="page-item">
+              <a class="page-link" href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+            
+            @foreach($resultado['data'] as $item)
+            
+            <li class="page-item"><a class="page-link" href="?page=1">1</a></li>
 
-    @endforeach
-    
-    <li class="page-item">
-      <a class="page-link" href="#" aria-label="Next">
-        <span aria-hidden="true">&raquo;</span>
-      </a>
-    </li>
-  </ul>
-</nav>
+            @endforeach
+            
+            <li class="page-item">
+              <a class="page-link" href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
       </div> 
    </div>
 

@@ -12,9 +12,9 @@
 <div class='container'>
    <!-- cabeçalho -->
    <div class='row'>
-      <div class='col-lg-12'>
-         <button type="button" class="btn btn-primary">Salvar</button>
-         <button type="button" class="btn btn-primary">Cancelar</button>
+        
+      <div class='col-lg-12 card'>
+         <h2>Adicionar Cadastro</h2>
       </div> 
    </div>
    <!-- lista -->
@@ -23,13 +23,13 @@
       <form method="post" action="{{route('inclusao')}}">
          @csrf
          <div class="form-group">
-    <label>Nome</label>
-    <input type="text" class="form-control" name="nome" placeholder="Nome">
-    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-  </div>
-  
-  <button type="submit" class="btn btn-primary">Salvar</button>
-
+           <label>Nome</label>
+           <input type="text" class="form-control" name="nome" placeholder="Nome">
+         </div>
+         <div class="form-group">
+            <button type="submit" class="btn btn-primary">Salvar</button>
+            <button type="button" class="btn btn-primary">Cancelar</button>
+        </div>
       </form>
       </div> 
    </div>

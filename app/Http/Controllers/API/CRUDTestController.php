@@ -48,14 +48,17 @@ class CRUDTestController extends Controller
         $nome = $request->input('nome');
         
         if ( empty($nome) )
-            return response("Parâmetros Inválidos!", 401);
+        return response("Parâmetros Inválidos!", 401);
         
         $id = \App\Models\Cadastro::adicionarCadastro($nome, $idUsuario);
         if ( !$id ) return response("Erro salvando dados no banco!", 500);
 
         return response()->json([
-            'id' => $id,
-            'message' => 'Dados salvos com sucesso!'
-        ]);
+              'id' => $id,
+             'message' => 'Dados salvos com sucesso!'
+            
+
+         ]);
+
     }
 }
