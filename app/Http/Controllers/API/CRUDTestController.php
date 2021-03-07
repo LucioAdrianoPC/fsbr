@@ -39,11 +39,30 @@ class CRUDTestController extends Controller
             'message' => 'Dados obtidos com sucesso!', 
             'data' => $list
         ];
-       
+           
        return view('inicial',compact('resultado'));
     }
 
     public function add(Request $request) {
+        $idUsuario = 1;
+        $nome = $request->input('nome');
+        
+        if ( empty($nome) )
+        return response("Parâmetros Inválidos!", 401);
+        
+        $id = \App\Models\Cadastro::adicionarCadastro($nome, $idUsuario);
+        if ( !$id ) return response("Erro salvando dados no banco!", 500);
+
+        return response()->json([
+              'id' => $id,
+             'message' => 'Dados salvos com sucesso!'
+            
+
+         ]);
+
+    }
+
+    public function edite(Request $request) {
         $idUsuario = 1;
         $nome = $request->input('nome');
         

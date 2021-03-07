@@ -44,11 +44,14 @@
                 <span aria-hidden="true">&laquo;</span>
               </a>
             </li>
-            
+            @php
+                $pag=0;
+            @endphp
             @foreach($resultado['data'] as $item)
-            
-            <li class="page-item"><a class="page-link" href="?page=1">1</a></li>
-
+              @php
+                $pag++;
+              @endphp
+            <li class="page-item"><a class="page-link" href="?page={{$pag}}">{{$pag}}</a></li>
             @endforeach
             
             <li class="page-item">
