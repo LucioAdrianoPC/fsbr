@@ -22,14 +22,14 @@ class CRUDTestController extends Controller
         $start = ($page - 1) * $limit;
         $list = \App\Models\Cadastro::listarCadastros($start, $limit, $fCodigo, $fNome, $fSituacao);
 
-        /*$resultado = response()->json([
-            'page' => $page,
-            'limit' => $limit,
-            'total_entries' => $qtdTotal,
-            'total_pages' => $total_pages,
-            'message' => 'Dados obtidos com sucesso!', 
-            'data' => $list
-        ]);*/
+        // $resultado = response()->json([
+        //     'page' => $page,
+        //     'limit' => $limit,
+        //     'total_entries' => $qtdTotal,
+        //     'total_pages' => $total_pages,
+        //     'message' => 'Dados obtidos com sucesso!', 
+        //     'data' => $list
+        // ]);
 
         $resultado = [
             'page' => $page,
@@ -53,14 +53,14 @@ class CRUDTestController extends Controller
         $id = \App\Models\Cadastro::adicionarCadastro($nome, $idUsuario);
         if ( !$id ) return response("Erro salvando dados no banco!", 500);
 
-         return response()->json([
-               'id' => $id,
-              'message' => 'Dados salvos com sucesso!'
-            
-
-          ]);
         
-        //  return view('inicial')->with('mensagem', 'Cadastrado com sucesso!');
+        //  return response()->json([
+        //        'id' => $id,
+        //       'message' => 'Dados salvos com sucesso!'
+        //   ]);
+        $resposta = $nome;
+        return view('inclusao' ,compact('resposta'));
+        
 
     }
 
@@ -77,13 +77,12 @@ class CRUDTestController extends Controller
         $id = \App\Models\Cadastro::alterarCadastro($codigo ,$idUsuario ,$nome, $situacao );
         if ( !$id ) return response("Erro salvando dados no banco!", 500);
 
-        return response()->json([
-              'id' => $id,
-             'message' => 'Dados editados com sucesso!'
-            
-
-         ]);
-
+        // return response()->json([
+        //       'id' => $id,
+        //      'message' => 'Dados editados com sucesso!'
+        //  ]);
+        $resposta = $nome;
+        return view('alteracao' ,compact('resposta'));
         }
 
         public function exclusao(Request $request) {
@@ -99,12 +98,11 @@ class CRUDTestController extends Controller
             $id = \App\Models\Cadastro::alterarCadastro($codigo ,$idUsuario ,$nome, $situacao );
             if ( !$id ) return response("Erro salvando dados no banco!", 500);
     
-            return response()->json([
-                  'id' => $id,
-                 'message' => 'Dados excluídos com sucesso!'
-                
-    
-             ]);
-    
+            // return response()->json([
+            //       'id' => $id,
+            //      'message' => 'Dados excluídos com sucesso!'
+            //  ]);
+            $resposta = $nome;
+            return view('exclusao' ,compact('resposta'));
             }
 }

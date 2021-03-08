@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'API\CRUDTestController@list')->name('inicial');
+//Route::get('/inicial', 'API\CRUDTestController@list');
 //Route::get('/novo', view('inclusao'));
 
 
